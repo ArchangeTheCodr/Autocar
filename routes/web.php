@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MarqueController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 
@@ -18,7 +19,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// Route du model category
 Route::prefix('/category')->name('category.')->controller(CategoryController::class)->group(function () {
+    
+    Route::get('/','index')->name('index');
+
+    Route::get('/create','create')->name('create');
+
+});
+
+
+// Route du model Marque
+Route::prefix('/marque')->name('marque.')->controller(MarqueController::class)->group(function () {
     
     Route::get('/','index')->name('index');
 
