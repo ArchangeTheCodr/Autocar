@@ -14,6 +14,14 @@ class vehicule extends Model
         "matricule",
         "year"
     ];
-    
+
     use HasFactory;
+
+    public function category () {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function marque () {
+        return $this->belongsTo(Marque::class);
+    }
 }

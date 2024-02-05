@@ -12,5 +12,9 @@ class Marque extends Model
         "name",
     ];
     
+    public function vehicule(){
+        return $this->hasMany(vehicule::class);
+    }
+
     use HasFactory;
 }
