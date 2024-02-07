@@ -6,16 +6,16 @@
     <title>Autocar</title>
 </head>
 <body>
-    <h1>Les categories</h1>
+    <h1> Tous les vehicules de la categorie {{ $name }}</h1>
     <ul>
-        @foreach($categories as $category)
+        @foreach($vehicules as $vehicule)
             <li>
                 <p>
-                    {{$category->name}}
-                    <a href="{{ route('category.show', ['id' => $category->id]) }}">Voir les vehicules</a>
+                <strong>Model :</strong> {{ $vehicule->name }} <br>
+                <strong>Prix : </strong>{{ $vehicule->price }} <br>
+                <strong>Annee : </strong>{{ $vehicule->year }} <br>
                 </p>
             </li>
-
         @endforeach
     </ul>
 </body>

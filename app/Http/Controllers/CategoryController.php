@@ -21,7 +21,11 @@ class CategoryController extends Controller
     }
 
     public function show($id){
-
+        $category = Category::find($id);
+        return  view('category/show',[
+            'vehicules'=> $category->vehicule,
+            'name' => $category->name
+        ]) ;
     }
 
 

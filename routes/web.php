@@ -24,7 +24,7 @@ Route::get('/', function () {
 Route::prefix('/category')->name('category.')->controller(CategoryController::class)->group(function () {
     
     Route::get('/','index')->name('index');
-
+    Route::get('/{id}','show')->name('show')->where(['id' => '[0-9]+']);
     Route::get('/create','create')->name('create');
 
 });
