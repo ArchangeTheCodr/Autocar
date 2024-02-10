@@ -13,6 +13,13 @@ class VehiculeController extends Controller
         ]);
     }
 
+    public function show($id){
+        $vehicule = Vehicule::find($id);
+        return view('vehicule/show', [
+            'vehicule'=> $vehicule
+        ]);
+    }
+    
     public function create(){
         // vehicule::create([
         //     'name'=> 'Electron mini',

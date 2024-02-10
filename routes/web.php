@@ -34,7 +34,7 @@ Route::prefix('/category')->name('category.')->controller(CategoryController::cl
 Route::prefix('/marque')->name('marque.')->controller(MarqueController::class)->group(function () {
     
     Route::get('/','index')->name('index');
-    Route::get('/{id}', 'show')->name('show');
+    Route::get('/{id}', 'show')->name('show')->where(['id' => '[0-9]+']);
     Route::get('/create','create')->name('create');
 
 });
@@ -44,7 +44,7 @@ Route::prefix('/marque')->name('marque.')->controller(MarqueController::class)->
 Route::prefix('/vehicule')->name('vehicule.')->controller(VehiculeController::class)->group(function () {
     
     Route::get('/','index')->name('index');
-
+    Route::get('/{id}', 'show')->name('show')->where(['id' => '[0-9]+']);
     Route::get('/create','create')->name('create');
 
 });
