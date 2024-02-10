@@ -13,6 +13,14 @@ class MarqueController extends Controller
         ]);
     }
 
+    public function show($id){
+        $marque = Marque::find($id);
+        return view('marque/show', [
+            'marque' => $marque->name,
+            'vehicules' => $marque->vehicule
+        ]);
+    }
+
     public function create(){
        
         return dd(Marque::all());

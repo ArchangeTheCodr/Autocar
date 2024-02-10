@@ -9,7 +9,12 @@
     <h1>Toutes nos marques</h1>
     <ul>
         @foreach($marques as $marque)
-            <li>{{$marque->name}}</li>
+            <li>
+                <p>
+                {{$marque->name}}
+                <a href="{{ route('marque.show', ['id' => $marque->id]) }} "> Voir les vehicules </a>
+                </p>
+            </li>
         @endforeach
     </ul>
 </body>
