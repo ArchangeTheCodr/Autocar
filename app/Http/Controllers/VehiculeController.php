@@ -19,7 +19,11 @@ class VehiculeController extends Controller
             'vehicule'=> $vehicule
         ]);
     }
-    
+
+    // public function edit($id){
+    //     return view('bobo'::with('vehicule', Vehicule::find($id)));
+    // }
+
     public function create(){
         // vehicule::create([
         //     'name'=> 'Electron mini',

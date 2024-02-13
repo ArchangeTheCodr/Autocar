@@ -15,6 +15,9 @@
             <strong>Prix : </strong>{{ $vehicule->price }} <br>
             <strong>Annee : </strong>{{ $vehicule->year }} <br>
             </p>
+            <p>
+                <button type="submit"> <a href="{{ route('vehicule.show', ['id' => $vehicule->id]) }}"> Details </a> </button>
+            </p>
         </li>
     @endforeach
     </ul>
