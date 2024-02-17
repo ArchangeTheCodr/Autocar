@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateMarqueRequest;
 use Illuminate\Http\Request;
 use App\Models\Marque;
 
@@ -21,8 +22,12 @@ class MarqueController extends Controller
         ]);
     }
 
-    public function create(){
-       
-        return dd(Marque::all());
+    public function create(){ 
+        return view('marque/create');
+    }
+
+    public function store(CreateMarqueRequest $request){
+        Marque::create($request->validated());
+        return redirect('/marque');
     }
 }

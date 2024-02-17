@@ -37,6 +37,7 @@ Route::prefix('/marque')->name('marque.')->controller(MarqueController::class)->
     Route::get('/','index')->name('index');
     Route::get('/{id}', 'show')->name('show')->where(['id' => '[0-9]+']);
     Route::get('/create','create')->name('create');
+    Route::post('/create', 'store')->name('store');
 
 });
 
