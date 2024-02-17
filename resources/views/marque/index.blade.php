@@ -10,10 +10,27 @@
     <ul>
         @foreach($marques as $marque)
             <li>
-                <p>
-                {{$marque->name}}
-                <a href="{{ route('marque.show', ['id' => $marque->id]) }} "> Voir les vehicules </a>
-                </p>
+                <div>
+                    <p>
+                    {{$marque->name}}
+                    <a href="{{ route('marque.show', ['id' => $marque->id]) }} "> Voir les vehicules </a>
+                    </p>
+                </div>
+                <div>
+                    <p>
+                        <button>
+                             <a href="{{ route('marque.edit', $marque->id) }}">
+                                Modifier
+                            </a> 
+                        </button>
+                        
+                        <form action="{{ route('marque.destroy', $marque->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <input type="submit" value="Supprimer">
+                        </form>
+                    </p>
+                </div>
             </li>
         @endforeach
     </ul>

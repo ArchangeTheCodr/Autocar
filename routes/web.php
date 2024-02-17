@@ -29,6 +29,7 @@ Route::prefix('/category')->name('category.')->controller(CategoryController::cl
     Route::post('/create', 'store')->name('store');
     Route::get('/edit/{id}','edit')->name('edit');
     Route::patch('/edit/{id}','update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('destroy');
 
 });
 
@@ -42,6 +43,7 @@ Route::prefix('/marque')->name('marque.')->controller(MarqueController::class)->
     Route::post('/create', 'store')->name('store');
     Route::get('/edit/{id}','edit')->name('edit');
     Route::patch('/edit/{id}','update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('destroy');
 
 });
 

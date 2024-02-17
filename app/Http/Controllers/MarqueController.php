@@ -43,4 +43,9 @@ class MarqueController extends Controller
         $marque->update($request->validated());
         return redirect()->route('marque.index');
     }
+
+    public function destroy($id){
+        Marque::find($id)->delete();
+        return redirect()->route('marque.index');
+    }
 }
