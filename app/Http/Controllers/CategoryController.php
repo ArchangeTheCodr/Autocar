@@ -31,9 +31,18 @@ class CategoryController extends Controller
         ]) ;
     }
 
+    public function edit($id){
+        // dd($category);
+        $category =  Category::find($id);
+        return view('category/edit',[
+            'category'=> $category
+        ]);
+    }
 
-    public function update(Request $request, $id){
-
+    public function update(CreateCategoryRequest $request, $id){
+        $category = Category::find($id);
+        $category->update($request->validated());
+        return redirect('/category');
     }
 
     public function destroy($id){
