@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CreateMarqueRequest extends FormRequest
 {
@@ -22,7 +23,7 @@ class CreateMarqueRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string','min:3', 'unique:marques'],
+            'name' => ['required', 'string','min:3', Rule::unique('marques')->ignore($this->route('id'))],
         ];
     }
 }

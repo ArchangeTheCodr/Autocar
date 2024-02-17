@@ -30,4 +30,17 @@ class MarqueController extends Controller
         Marque::create($request->validated());
         return redirect('/marque');
     }
+
+    public function edit($id){
+        $marque = Marque::find($id);
+        return view('marque/edit', [
+            'marque'=> $marque
+        ]);
+    }
+
+    public function update(CreateMarqueRequest $request, $id){
+        $marque = Marque::find($id);
+        $marque->update($request->validated());
+        return redirect()->route('marque.index');
+    }
 }
