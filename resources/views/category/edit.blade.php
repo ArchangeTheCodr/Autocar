@@ -1,39 +1,25 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autocar</title>
-</head>
-<body>
-    <h1>Modifier une categorie</h1>
+@extends('base')
 
-    <form action="" method="post">
+@section('title')  
+    Autocar | Modifier une categorie
+@endsection
 
-        @csrf
-        @method('PATCH')
+@section('libelle')  
+   Modifier une categorie
+@endsection
 
-        <div>
-            <label for="name">Nom</label>
-            <input type="text" name="name" value="{{ old('name', $category->name) }}">
+@section('method')  
+    @method('PATCH')
+@endsection
 
-            @error('name')
-                {{ $message }}
-            @enderror
-        </div>
+@section('oldName')  
+    value="{{ old('name', $category->name) }}"
+@endsection
 
-        <div>
-            <label for="description">description</label>
-            <input type="text" name="description" value="{{ $category->description}}">
+@section('oldDescription')  
+    value="{{ $category->description}}"
+@endsection
 
-            @error('description')
-                {{ $message }}
-            @enderror
-        </div>
-
-        <input type="submit" value="Enregistrer">
-
-    </form>
-
-</body>
-</html>
+@section('content')
+    @include('category/form')
+@endsection
