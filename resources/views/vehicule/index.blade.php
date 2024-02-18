@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autocar</title>
-</head>
-<body>
+@extends('base')
+
+@section('title')
+    Autocar | Vehicule
+@endsection
+
+@section('content')
     <h1>Tous nos vehicules</h1>
 
     <ul>
@@ -23,7 +22,7 @@
             <div>
                     <p>
                         <button>
-                             <a href="{{ route('vehicule.edit', $vehicule->id) }}">
+                            <a href="{{ route('vehicule.edit', $vehicule->id) }}">
                                 Modifier
                             </a> 
                         </button>
@@ -38,5 +37,5 @@
         </li>    
     @endforeach
     </ul>
-</body>
-</html>
+@endsection
+

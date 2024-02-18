@@ -1,90 +1,41 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autocar</title>
-</head>
-<body>
+@extends('base')
+
+@section('title')  
+    Autocar | Modifier un vehicule
+@endsection
+
+@section('libelle')
     <h1>Modifier un vehicule</h1>
+@endsection
 
-    <form action="" method="post">
-        @csrf
-        @method('PATCH')
+@section('method')
+    @method('PATCH')
+@endsection
 
-        <div>
-            <label for="name">Nom</label>
-            <input type="text" name="name" value="{{ $vehicule->name }}">
+@section('oldName')
+    value=" {{ $vehicule->name }} "
+@endsection
 
-            @error('name')
-                {{ $message }}
-            @enderror
-        </div>
+@section('oldPrice')
+    value="{{ $vehicule->price }}"
+@endsection
 
-        <div>
-            <label for="price">Prix</label>
-            <input type="number" name="price" value="{{ $vehicule->price }}">
+@section('oldMatricule')
+    value=" {{ $vehicule->matricule }} "
+@endsection
 
-            @error('price')
-                {{ $message }}
-            @enderror
-        </div>
+@section('oldYear')
+    value=" {{ $vehicule->year }} "
+@endsection
 
-        <div>
-            <label for="matricule">matricule</label>
-            <input type="text" name="matricule" value="{{ $vehicule->matricule }}">
+@section('oldCategory')
+    <option value="{{ $vehicule->id }}">{{ $vehicule->category->name }} </option>
+@endsection
 
-            @error('matricule')
-                {{ $message }}
-            @enderror
-        </div>
+@section('oldMarque')
+    <option value="{{ $vehicule->id }}">{{ $vehicule->marque->name }} </option>
+@endsection
 
-        <div>
-            <label for="year">Date de creation</label>
-            <input type="text" name="year" value="{{ $vehicule->year }}">
-            
-            @error('year')
-                {{ $message }}
-            @enderror
-        </div>
-
-        <div>
-            <label for="category_id">Selectionner une categorie</label>
-            <select name="category_id" id="">
-                
-                @foreach($categories as $category)
-                    @if($category->id == $vehicule->category->id)
-                        <option value="{{ $category->id }}" selected>{{$category->name}}</option>
-                    @else
-                        <option value="{{ $category->id }}" >{{$category->name}}</option>
-                    @endif
-                @endforeach
-            </select>
-
-            @error('category')
-                {{ $message }}
-            @enderror
-        </div>
-
-        <div>
-            <label for="marque_id">Selectionner une categorie</label>
-            <select name="marque_id" id="">
-                @foreach($marques as $marque)
-                    @if($marque->id == $vehicule->marque->id)
-                        <option value="{{ $marque->id }}" selected>{{$marque->name}}</option>
-                    @else
-                        <option value="{{ $marque->id }}" >{{$marque->name}}</option>
-                    @endif
-                    <!-- <option value="{{ $marque->id }}">{{$marque->name}}</option> -->
-                @endforeach
-            </select>
-
-            @error('marque')
-                {{ $message }}
-            @enderror
-        </div>
-
-        <input type="submit" value="Enregistrer">
-    </form>
-</body>
-</html>
+@section('content')
+    @include('vehicule/form')
+@endsection
