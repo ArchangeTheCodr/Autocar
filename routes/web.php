@@ -4,6 +4,7 @@ use App\Http\Controllers\MarqueController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VehiculeController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,8 +18,19 @@ use App\Http\Controllers\VehiculeController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
+// Route pour l'authentification de l'utilisateur
+Route::prefix('/auth')->name('auth.')->controller(AuthController::class)->group( function () {
+
+    Route::get('/register', 'register')->name('register');
+    Route::post('/register', 'registerUser')->name('registerUser');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/login', 'loginUser')->name('loginUser');
+    Route::delete('/logout', 'logout')->name('logout');
+
+
+});
 
 // Routes du model Category
 Route::prefix('/category')->name('category.')->controller(CategoryController::class)->group(function () {
