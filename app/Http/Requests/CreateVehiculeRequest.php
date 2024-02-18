@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CreateVehiculeRequest extends FormRequest
 {
@@ -22,9 +23,9 @@ class CreateVehiculeRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string','min:3', 'unique:vehicules'],
+            'name' => ['required', 'string','min:3', Rule::unique('vehicules')->ignore($this->route('id'))],
             'price' => ['required'],
-            'matricule' => ['', 'min:5', 'max:8', 'unique:vehicules'],
+            'matricule' => ['', 'min:5', 'max:8', Rule::unique('vehicules')->ignore($this->route('id'))],
             'year' => ['required',],
             'category_id' => ['required', ],
             'marque_id' => ['required', ]

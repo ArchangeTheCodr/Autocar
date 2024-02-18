@@ -55,5 +55,8 @@ Route::prefix('/vehicule')->name('vehicule.')->controller(VehiculeController::cl
     Route::get('/{id}', 'show')->name('show')->where(['id' => '[0-9]+']);
     Route::get('/create','create')->name('create');
     Route::post('/create', 'store')->name('store');
+    Route::get('/edit/{id}', 'edit')->name('edit');
+    Route::patch('/edit/{id}', 'update')->name('update');
+    Route::delete('/delete/{id}', 'destroy')->name('destroy');
 
 });

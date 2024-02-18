@@ -37,4 +37,28 @@ class VehiculeController extends Controller
         $vehicule->save();
         return redirect('/vehicule');
     }
+
+    public function edit($id){
+        $vehicule = Vehicule::find($id);
+        return view('vehicule/edit', [
+            'vehicule'=> $vehicule,
+            'marques' => Marque::all(),
+            'categories' => Category::all()
+        ]);
+    }
+
+    public function update(CreateVehiculeRequest $request, $id){
+        $vehicule = Vehicule::find($id);
+        $vehicule->update($request->validated()) ;
+        $vehicule->category_id = $request->category_id;
+        $vehicule->marque_id = $request->marque_id;
+        $vehicule->save();
+        return redirect()->route('vehicule.index');
+
+    }
+
+    public function destroy($id){
+        Vehicule::find($id)->delete();
+        return redirect()->route('vehicule.index');
+    }
 }
