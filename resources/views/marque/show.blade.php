@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autocar</title>
-</head>
-<body>
+@extends('base')
+
+@section('title')  
+   Marque |  {{ $marque }}
+@endsection
+
+@section('content')
     <h1>Tous les vehicules de la marque {{ $marque }}</h1>
     <ul>
     @foreach($vehicules as $vehicule)
@@ -21,5 +20,4 @@
         </li>
     @endforeach
     </ul>
-</body>
-</html>
+@endsection

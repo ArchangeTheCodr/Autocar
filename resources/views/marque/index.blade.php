@@ -6,6 +6,17 @@
     <title>Autocar</title>
 </head>
 <body>
+    
+</body>
+</html>
+
+@extends('base')
+
+@section('title')  
+    Autocar | Marque
+@endsection
+
+@section('content') 
     <h1>Toutes nos marques</h1>
     <ul>
         @foreach($marques as $marque)
@@ -34,5 +45,4 @@
             </li>
         @endforeach
     </ul>
-</body>
-</html>
+@endsection
