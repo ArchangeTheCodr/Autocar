@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateVehiculeRequest;
+use App\Http\Requests\VehiculeRequest;
 use App\Models\Category;
 use App\Models\Marque;
 use Illuminate\Http\Request;
@@ -30,7 +30,7 @@ class VehiculeController extends Controller
         ]);
     }
 
-    public function store(CreateVehiculeRequest $request){
+    public function store(VehiculeRequest $request){
         $vehicule = Vehicule::create($request->validated());
         $vehicule->category_id = $request->category_id;
         $vehicule->marque_id = $request->marque_id;
@@ -47,7 +47,7 @@ class VehiculeController extends Controller
         ]);
     }
 
-    public function update(CreateVehiculeRequest $request, $id){
+    public function update(VehiculeRequest $request, $id){
         $vehicule = Vehicule::find($id);
         $vehicule->update($request->validated()) ;
         $vehicule->category_id = $request->category_id;

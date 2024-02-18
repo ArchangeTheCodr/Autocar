@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateMarqueRequest;
+use App\Http\Requests\MarqueRequest;
 use Illuminate\Http\Request;
 use App\Models\Marque;
 
@@ -26,7 +26,7 @@ class MarqueController extends Controller
         return view('marque/create');
     }
 
-    public function store(CreateMarqueRequest $request){
+    public function store(MarqueRequest $request){
         Marque::create($request->validated());
         return redirect('/marque');
     }
@@ -38,7 +38,7 @@ class MarqueController extends Controller
         ]);
     }
 
-    public function update(CreateMarqueRequest $request, $id){
+    public function update(MarqueRequest $request, $id){
         $marque = Marque::find($id);
         $marque->update($request->validated());
         return redirect()->route('marque.index');

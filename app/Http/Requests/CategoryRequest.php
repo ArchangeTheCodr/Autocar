@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CreateMarqueRequest extends FormRequest
+class CategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,8 @@ class CreateMarqueRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string','min:3', Rule::unique('marques')->ignore($this->route('id'))],
+            "name"=> ["required","string","min:3", Rule::unique("categories")->ignore($this->route()->parameter("id"))],
+            "description"=> ["required",],
         ];
     }
 }
