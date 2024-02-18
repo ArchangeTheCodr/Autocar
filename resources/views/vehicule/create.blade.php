@@ -48,6 +48,31 @@
         @enderror
     </div>
 
+    <div>
+        <label for="category_id">Selectionner une categorie</label>
+        <select name="category_id" id="">
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{$category->name}}</option>
+            @endforeach
+        </select>
+
+        @error('category')
+            {{ $message }}
+        @enderror
+    </div>
+
+    <div>
+        <label for="marque_id">Selectionner une categorie</label>
+        <select name="marque_id" id="">
+            @foreach($marques as $marque)
+                <option value="{{ $marque->id }}">{{$marque->name}}</option>
+            @endforeach
+        </select>
+
+        @error('marque')
+            {{ $message }}
+        @enderror
+    </div>
     <input type="submit" value="Enregistrer">
 
 </form>

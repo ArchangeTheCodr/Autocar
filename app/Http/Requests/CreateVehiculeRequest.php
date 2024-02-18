@@ -26,6 +26,8 @@ class CreateVehiculeRequest extends FormRequest
             'price' => ['required'],
             'matricule' => ['', 'min:5', 'max:8', 'unique:vehicules'],
             'year' => ['required',],
+            'category_id' => ['required', ],
+            'marque_id' => ['required', ]
         ];
     }
 }
