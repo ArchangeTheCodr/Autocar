@@ -43,9 +43,7 @@
     <div>
         <label for="category_id">Selectionner une categorie</label>
         <select name="category_id">
-            @foreach($categories as $category)
-                @yield('oldCategory')
-            @endforeach
+            @yield('oldCategory')
         </select>
 
         @error('category')
@@ -56,9 +54,7 @@
     <div>
         <label for="marque_id">Selectionner une categorie</label>
         <select name="marque_id" id="">
-            @foreach($marques as $marque)
-                @yield('oldMarque')
-            @endforeach
+            @yield('oldMarque')
         </select>
 
         @error('marque')

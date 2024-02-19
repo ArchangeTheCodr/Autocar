@@ -29,11 +29,23 @@
 @endsection
 
 @section('oldCategory')
-    <option value="{{ $vehicule->id }}">{{ $vehicule->category->name }} </option>
+    @foreach($categories as $category)
+        @if($vehicule->category->id == $category->id)
+            <option value="{{$category->id }}" selected>{{ $category->name }} </option>
+        @else
+            <option value="{{$category->id }}">{{ $category->name }} </option>
+        @endif           
+    @endforeach
 @endsection
 
 @section('oldMarque')
-    <option value="{{ $vehicule->id }}">{{ $vehicule->marque->name }} </option>
+    @foreach($marques as $marque)
+        @if($vehicule->marque->id == $marque->id)
+            <option value="{{$marque->id }}" selected>{{ $marque->name }} </option>
+        @else
+            <option value="{{$marque->id }}">{{ $marque->name }} </option>
+        @endif           
+    @endforeach
 @endsection
 
 @section('content')
