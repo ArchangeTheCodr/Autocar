@@ -1,7 +1,8 @@
 @extends('base')
 
 @section('title')  
-   Marque |  {{ $marque }}
+<title>Marque |  {{ $marque }}</title>
+   
 @endsection
 
 @section('content')

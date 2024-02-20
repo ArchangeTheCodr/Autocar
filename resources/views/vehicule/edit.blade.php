@@ -1,31 +1,32 @@
 @extends('base')
 
 @section('title')  
-    Autocar | Modifier un vehicule
+    <title>Autocar | Modifier un vehicule</title>
 @endsection
 
 @section('libelle')
     <h1>Modifier un vehicule</h1>
 @endsection
 
+
 @section('method')
     @method('PATCH')
 @endsection
 
 @section('oldName')
-    value=" {{ $vehicule->name }} "
+    <input type="text" name="name" value="{{ $vehicule->name }}">
 @endsection
 
 @section('oldPrice')
-    value="{{ $vehicule->price }}"
+    <input type="text" name="price" value="{{ $vehicule->price }}">
 @endsection
 
 @section('oldMatricule')
-    value=" {{ $vehicule->matricule }} "
+    <input type="text" name="matricule" value="{{ $vehicule->matricule }}">
 @endsection
 
 @section('oldYear')
-    value=" {{ $vehicule->year }} "
+    <input type="text" name="year" value="{{ $vehicule->year }}">
 @endsection
 
 @section('oldCategory')
@@ -47,6 +48,7 @@
         @endif           
     @endforeach
 @endsection
+
 
 @section('content')
     @include('vehicule/form')

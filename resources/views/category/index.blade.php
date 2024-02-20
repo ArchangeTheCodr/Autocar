@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('title')  
-    Autocar | Categorie
+    <title>Autocar | Categorie</title>    
 @endsection
 
 @section('content')  

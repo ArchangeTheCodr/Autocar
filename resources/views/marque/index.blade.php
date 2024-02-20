@@ -13,7 +13,8 @@
 @extends('base')
 
 @section('title')  
-    Autocar | Marque
+    <title>Autocar | Marque</title>
+    
 @endsection
 
 @section('content') 

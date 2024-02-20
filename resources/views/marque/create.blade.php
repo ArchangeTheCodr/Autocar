@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('title')  
-    Autocar | Creer une marque
+    <title>Autocar | Creer une marque</title>  
 @endsection
 
 @section('libelle')  

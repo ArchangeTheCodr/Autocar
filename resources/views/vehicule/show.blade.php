@@ -1,7 +1,7 @@
 @extends('base')
 
 @section('title')
-    Vehicule | {{ $vehicule->marque->name }} {{ $vehicule->name }}
+    <title> Vehicule | {{ $vehicule->marque->name }} {{ $vehicule->name }} </title>
 @endsection
 
 @section('content')

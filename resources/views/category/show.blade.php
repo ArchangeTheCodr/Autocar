@@ -1,7 +1,7 @@
 @extends('base')
 
-@section('title')  
-   Categorie |  {{ $name }}
+@section('title') 
+    <title>Categorie |  {{ $name }}</title>
 @endsection
 
 @section('content')

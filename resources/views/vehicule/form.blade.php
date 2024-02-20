@@ -6,7 +6,7 @@
     
     <div>
         <label for="name">Nom</label>
-        <input type="text" name="name" @yield('oldName')>
+        @yield('oldName')
 
         @error('name')
             {{ $message }}
@@ -15,7 +15,7 @@
 
     <div>
         <label for="price">Prix</label>
-        <input type="number" name="price" @yield('oldPrice')>
+        @yield('oldPrice')
 
         @error('price')
             {{ $message }}
@@ -24,7 +24,7 @@
 
     <div>
         <label for="matricule">matricule</label>
-        <input type="text" name="matricule" @yield("oldMatricule")>
+        @yield("oldMatricule")
 
         @error('matricule')
             {{ $message }}
@@ -33,7 +33,7 @@
 
     <div>
         <label for="year">Date de creation</label>
-        <input type="text" name="year" @yield('oldYear')>
+        @yield('oldYear')
         
         @error('year')
             {{ $message }}
