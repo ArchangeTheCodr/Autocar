@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class vehicule extends Model
+class Vehicule extends Model
 {
 
     protected $fillable = [
@@ -23,5 +23,9 @@ class vehicule extends Model
 
     public function marque () {
         return $this->belongsTo(Marque::class);
+    }
+
+    public function galerie () {
+        return $this->belongsTo(Galeries::class);
     }
 }
