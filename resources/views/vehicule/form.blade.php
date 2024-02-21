@@ -1,9 +1,27 @@
 @yield('libelle')
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
     @csrf
     @yield('method')
     
+    <div>
+        <label for="video">video</label>
+        <input type="file" name="video" id="">
+
+        @error('video')
+            {{ $message }}
+        @enderror
+    </div>
+
+    <div>
+        <label for="image">images</label>
+        <input type="file" multiple name="image[]" id="">
+
+        @error('image')
+            {{ $message }}
+        @enderror
+    </div>
+
     <div>
         <label for="name">Nom</label>
         @yield('oldName')
