@@ -14,6 +14,6 @@ class Videos extends Model
     ];
 
     public function galerie(){
-        return $this->belongsTo(Galeries::class);
+        return $this->belongsTo(Galeries::class, 'videos_id');
     }
 }

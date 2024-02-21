@@ -26,6 +26,6 @@ class Vehicule extends Model
     }
 
     public function galerie () {
-        return $this->belongsTo(Galeries::class);
+        return $this->belongsTo(Galeries::class, 'galeries_id');
     }
 }
