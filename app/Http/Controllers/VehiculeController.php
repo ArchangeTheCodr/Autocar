@@ -2,11 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GalerieRequest;
+use App\Http\Requests\ImageRequest;
 use App\Http\Requests\VehiculeRequest;
+use App\Http\Requests\VideoRequest;
 use App\Models\Category;
 use App\Models\Marque;
+use App\Models\Images;
+use App\Models\Galeries;
+use App\Models\Videos;
 use Illuminate\Http\Request;
-use App\Models\vehicule;
+use Illuminate\Http\UploadedFile;
+use App\Models\Vehicule;
 
 class VehiculeController extends Controller
 {
@@ -30,13 +37,23 @@ class VehiculeController extends Controller
         ]);
     }
 
-    public function store(VehiculeRequest $request){
+
+    // methode pour la validation des donnees du model vehicule
+    private function validateVehicule(VehiculeRequest $request, Request $request2){
         $vehicule = Vehicule::create($request->validated());
         $vehicule->category_id = $request->category_id;
         $vehicule->marque_id = $request->marque_id;
+        $galReq = new GalerieRequest;
+        $vehicule->galeries_id = $galReq->createGalerie($request2);
         $vehicule->save();
+    }
+
+    public function store(Request $request,VehiculeRequest $vehiculeRequest){
+        $this->validateVehicule($vehiculeRequest, $request);
         return redirect('/vehicule');
     }
+
+    
 
     public function edit($id){
         $vehicule = Vehicule::find($id);
