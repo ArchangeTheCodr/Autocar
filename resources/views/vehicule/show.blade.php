@@ -9,7 +9,20 @@
     <h2>Vehicule de marque {{ $vehicule->marque->name }} et de categorie {{ $vehicule->category->name }}  </h2>
     <h3>Vehicule creer en {{ $vehicule->year }}</h3>
     <h4>Prix du vehicule {{ $vehicule->price }}</h4>
-
+    <h4>Les images</4>
+    <article>
+            @foreach($vehicule->getImageUrl() as $image)
+                <p>
+                    <img src="/storage/{{ $image->image }}" alt="{{ $vehicule->name }}">
+                </p>
+            @endforeach
+    </article>
+    <h4>La video</h4>
+    <article>
+        <video src="{{ $vehicule->getVideoUrl() }}" controls width="640" height="360">
+            Presentation du {{ $vehicule->name }}
+        </video>
+    </article>
     <form action="" method='post'>
         <input type="submit" value="Reserver la voiture">
     </form>

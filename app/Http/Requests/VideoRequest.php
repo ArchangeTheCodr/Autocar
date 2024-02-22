@@ -38,7 +38,7 @@ class VideoRequest extends FormRequest
         // sauvegarde dans le systeme de fichier
         $videoPath = $video->store('vehicule/videos', 'public');
 
-        //enregistrement dans la DB et recuperation des id dans la variable galerieImage
+        //enregistrement dans la DB et recuperation de id
         Videos::create([
             'video' => $videoPath
         ]);
