@@ -14,6 +14,7 @@ use App\Models\Videos;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use App\Models\Vehicule;
+use Illuminate\Support\Facades\Storage;
 
 class VehiculeController extends Controller
 {
@@ -64,14 +65,39 @@ class VehiculeController extends Controller
         ]);
     }
 
-    public function update(VehiculeRequest $request, $id){
+    public function update(Request $request2, VehiculeRequest $request, $id){
+        // Recuperation du vehicule
         $vehicule = Vehicule::find($id);
+
+        // Mise ajour des donnees
         $vehicule->update($request->validated()) ;
         $vehicule->category_id = $request->category_id;
         $vehicule->marque_id = $request->marque_id;
-        $vehicule->save();
-        return redirect()->route('vehicule.index');
+        
+        //recuperation de l'ancienne galerie
+        $gal = $vehicule->galerie;
+        $galerie = Galeries::find($gal->id);
 
+        //suppression des anciens medias dans le systeme de fichiers laravel
+        Storage::disk('public')->delete($galerie->video->video);
+        foreach($galerie->images as $image) Storage::disk('public')->delete($image->image);
+
+
+        // Suppression de l'ancienne galerie dans la db
+        foreach($galerie->images as $image) $image->delete();
+        $video = Videos::find($galerie->video->id);
+        $video->delete();
+        $galerie->delete();
+
+        
+        // Creation de la nouvelle galerie avec les nouveaux medias soumis
+        $galReq = new GalerieRequest;
+        $vehicule->galeries_id = $galReq->createGalerie($request2);
+
+        // Sauvegarde des nouvelles donnees
+        $vehicule->save();
+
+        return redirect()->route('vehicule.index');
     }
 
     public function destroy($id){

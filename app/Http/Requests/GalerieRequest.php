@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Videos;
 use Illuminate\Foundation\Http\FormRequest;
 use illuminate\Http\Request;
 use App\Models\Galeries;
@@ -40,10 +41,16 @@ class GalerieRequest extends FormRequest
         $imgReq = new  ImageRequest;
         $images_id = $imgReq->validateImage($request);
 
-        // Creation d'une galerie et ajout de la video associee
+        // Creation d'une galerie
         $galerie = new Galeries;
-        $galerie->videos_id = $video_id;
         $galerie->save();
+
+        
+        // Ajout de l'id de la galerie a la video upload
+        $video = Videos::find($video_id);
+        $video->galeries_id = $galerie->id;
+        $video->update();
+        $video->save();
 
         // Ajout de l'id de la galerie a chaque image upload
         foreach($images_id as $image_id){

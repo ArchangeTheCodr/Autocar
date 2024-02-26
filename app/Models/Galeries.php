@@ -10,10 +10,14 @@ class Galeries extends Model
     use HasFactory;
 
     public function video(){
-        return $this->belongsTo(Videos::class, 'videos_id');
+        return $this->hasOne(Videos::class);
     }
 
     public function images(){
         return $this->hasMany(Images::class);
+    }
+
+    public function vehicule(){
+        return $this->belongsTo(Vehicule::class);
     }
 }
