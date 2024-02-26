@@ -13,6 +13,15 @@
     @method('PATCH')
 @endsection
 
+@section('videoInput')
+    <input type="file" name="video" id="">  
+@endsection
+
+@section('imagesInput')
+    <input type="file" multiple name="image[]" id="">
+@endsection
+
+
 @section('oldName')
     <input type="text" name="name" value="{{ $vehicule->name }}">
 @endsection

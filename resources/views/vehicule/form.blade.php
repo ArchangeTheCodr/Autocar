@@ -6,8 +6,8 @@
     
     <div>
         <label for="video">video</label>
-        <input type="file" name="video" id="">
-
+        @yield('videoInput')
+       
         @error('video')
             {{ $message }}
         @enderror
@@ -15,8 +15,8 @@
 
     <div>
         <label for="image">images</label>
-        <input type="file" multiple name="image[]" id="">
-
+        @yield('imagesInput')
+        
         @error('image')
             {{ $message }}
         @enderror
@@ -70,7 +70,7 @@
     </div>
 
     <div>
-        <label for="marque_id">Selectionner une categorie</label>
+        <label for="marque_id">Selectionner une marque</label>
         <select name="marque_id" id="">
             @yield('oldMarque')
         </select>
@@ -79,6 +79,7 @@
             {{ $message }}
         @enderror
     </div>
+    
     <input type="submit" value="Enregistrer">
 
 </form>
