@@ -13,7 +13,7 @@ class Marque extends Model
     ];
     
     public function vehicule(){
-        return $this->hasMany(vehicule::class);
+        return $this->hasMany(Vehicule::class);
     }
 
     use HasFactory;
