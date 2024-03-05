@@ -7,6 +7,7 @@ use App\Models\Reservation;
 use App\Models\Vehicule;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReservationItemRequest;
+use Carbon\Carbon;
 
 class ReservationItemController extends Controller
 {
@@ -23,7 +24,12 @@ class ReservationItemController extends Controller
             ['user_id' => auth()->user()->id]
         );
         $item = ReservationItem::create($request->validated());
-        $item->total_price = $request->quantity * $item->vehicule->price;
+
+        // Recuperation des dates afin de les parser et obtenir la duree d'un remboursement
+        $dateD = Carbon::parse($request->start_date);
+        $dateF = Carbon::parse($request->end_date);
+        $duree = $dateF->diffInDays($dateD);
+        $item->total_price = $request->quantity * $item->vehicule->price * $duree;
         $item->reservation_id = $reservation->id;
         $item->save();
 
