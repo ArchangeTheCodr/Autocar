@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\MarqueController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\ReservationItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VehiculeController;
@@ -71,4 +73,32 @@ Route::prefix('/vehicule')->name('vehicule.')->controller(VehiculeController::cl
     Route::patch('/edit/{id}', 'update')->name('update');
     Route::delete('/delete/{id}', 'destroy')->name('destroy');
 
+
 });
+
+Route::controller(ReservationItemController::class)->name('reservationItem.')->group(function () {
+
+    // Ajout du vehicule a la fiche de reservation
+    Route::get('/vehicule/{id}/addToReservation', 'create')
+        ->name('create')
+        ->where(['id' => '[0-9]+']);
+    
+    Route::post('/vehicule/{id}/addToReservation', 'store')
+        ->name('storeReservationItem')
+        ->where(['id' => '[0-9]+']);
+
+
+});
+
+
+// Routes pour la gestion de la reservation
+
+Route::prefix('/reservation')->name('reservation.')->controller(ReservationController::class)->group(function () {
+
+    Route::get('/', 'index')->name('index');
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+
+});
+
+// Route du model ReservationItem
