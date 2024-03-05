@@ -23,8 +23,10 @@
             Presentation du {{ $vehicule->name }}
         </video>
     </article>
-    <form action="" method='post'>
-        <input type="submit" value="Reserver la voiture">
-    </form>
+    <button>
+        <a href="{{ route('reservationItem.create', ['id' => $vehicule->id]) }}">
+            Reserver la voiture
+        </a>
+    </button>
 @endsection
 
