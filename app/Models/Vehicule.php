@@ -33,6 +33,10 @@ class Vehicule extends Model
         return $this->belongsTo(Galeries::class, 'galeries_id');
     }
 
+    public function reservationItem () {
+        return $this->hasOne(ReservationItem::class);
+    }
+
     // Recuperation de toutes les images liees au vehicule
     public function getImageUrl(){
         return $this->galerie->images;
