@@ -33,6 +33,38 @@ class ReservationItemController extends Controller
         $item->reservation_id = $reservation->id;
         $item->save();
 
-        return redirect()->route('vehicule.index');
+        return redirect()->route('reservation.create');
     }
+
+    public function edit($vehiculeId, $reservationItemId){
+        $vehicule = Vehicule::find($vehiculeId);
+        $item = ReservationItem::find($reservationItemId);
+        return view('reservationItem.edit', [
+            'vehicule' => $vehicule,
+            'item' => $item
+        ]);
+    }
+
+    public function update(ReservationItemRequest $request, $vehiculeId, $reservationItemId){
+        $item = ReservationItem::find($reservationItemId);
+        $item->update($request->validated());
+
+        // Recuperation des dates afin de les parser et obtenir la duree d'un remboursement
+        $dateD = Carbon::parse($request->start_date);
+        $dateF = Carbon::parse($request->end_date);
+        $duree = $dateF->diffInDays($dateD);
+
+        // Prix total = quantite*prix_du_vehicule*duree de location
+        $item->total_price = $request->quantity * $item->vehicule->price * $duree;
+        $item->save();
+
+        return redirect()->route('reservation.create');
+    }
+
+    public function destroy($vehiculeId, $reservationItemId){
+        $item = ReservationItem::find($reservationItemId);
+        $item->delete();
+        return redirect()->route('reservation.create'); 
+    }
+
 }

@@ -87,6 +87,17 @@ Route::controller(ReservationItemController::class)->name('reservationItem.')->g
         ->name('storeReservationItem')
         ->where(['id' => '[0-9]+']);
 
+    Route::get('/vehicule/{vehiculeId}/updateReservation/{reservationItemId}', 'edit')
+        ->name('edit')
+        ->where(['vehiculeId' => '[0-9]+', 'reservationItemId' => '[0-9]+']);
+
+    Route::patch('/vehicule/{vehiculeId}/updateReservation/{reservationItemId}', 'update')
+        ->name('update')
+        ->where(['vehiculeId' => '[0-9]+', 'reservationItemId' => '[0-9]+']);
+     
+    Route::delete('/vehicule/{vehiculeId}/removeFromReservation/{reservationItemId}', 'destroy')
+        ->name('destroy')
+        ->where(['vehiculeId' => '[0-9]+', 'reservationItemId' => '[0-9]+']);
 
 });
 

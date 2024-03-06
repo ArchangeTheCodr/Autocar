@@ -20,14 +20,10 @@
                 <p> Prix : {{ $item->total_price }} </p>  
                     
                 <p>
-                    <form action="">
+                    <a href="{{ route('reservationItem.edit', ['vehiculeId' => $item->vehicule->id, 'reservationItemId' => $item->id]) }}">Modifier</a>
+                    <form action="{{ route('reservationItem.destroy', ['vehiculeId' => $item->vehicule->id, 'reservationItemId' => $item->id]) }}" method="post">
                         @csrf
-                        @method('PATCH')
-                        <input type="submit" value="Modifier">
-                    </form>
-                    <form action="">
-                        @csrf
-                        @method('DELETE')
+                        @method('delete')
                         <input type="submit" value="Supprimer">
                     </form>
                 </p>
