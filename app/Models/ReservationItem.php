@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @mixin IdeHelperReservationItem
+ */
 class ReservationItem extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 
-        'start_date',
-        'end_date',
-        'quantity',
-        'vehicule_id',
-    ];
+    protected $guarded = [];
 
     public function vehicule() {
         return $this->belongsTo(Vehicule::class);
