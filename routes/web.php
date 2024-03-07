@@ -107,8 +107,8 @@ Route::controller(ReservationItemController::class)->name('reservationItem.')->g
 Route::prefix('/reservation')->name('reservation.')->controller(ReservationController::class)->group(function () {
 
     Route::get('/', 'index')->name('index');
-    Route::get('/create', 'create')->name('create');
-    Route::post('/store', 'store')->name('store');
+    Route::get('/create/{reservation}', 'create')->name('create');
+    Route::post('/create/{reservation}', 'store')->name('store');
 
 });
 

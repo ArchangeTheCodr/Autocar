@@ -10,7 +10,7 @@
             {{ session('delete') }}
         </div>
     @endif
-    <h1>Ma reservation</h1>
+    <h1>Ma reservation</h1> 
 
     <div>
         @forelse ($reservation->items as $item)
