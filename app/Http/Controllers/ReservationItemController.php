@@ -22,18 +22,18 @@ class ReservationItemController extends Controller
         $reservation = Reservation::firstOrCreate(
             ['user_id' => auth()->id()], 
             ['user_id' => auth()->user()->id]
-        )->get()->where('user_id', '=', auth()->user()->id)
-        ->last();
-
+        );
         $item = ReservationItem::create($request->validated());
-        // Recuperation des dates afin de les parser et obtenir la duree d'une reservation
+
+        // Recuperation des dates afin de les parser et obtenir la duree d'un remboursement
         $dateD = Carbon::parse($request->start_date);
         $dateF = Carbon::parse($request->end_date);
         $duree = $dateF->diffInDays($dateD);
         $item->total_price = $request->quantity * $item->vehicule->price * $duree;
         $item->reservation_id = $reservation->id;
         $item->save();
-        return redirect()->route('reservation.index');
+
+        return redirect()->route('reservation.create');
     }
 
     public function edit($vehiculeId, $reservationItemId){
@@ -58,13 +58,13 @@ class ReservationItemController extends Controller
         $item->total_price = $request->quantity * $item->vehicule->price * $duree;
         $item->save();
 
-        return redirect()->route('reservation.index');
+        return redirect()->route('reservation.create');
     }
 
     public function destroy($vehiculeId, $reservationItemId){
-        $item = ReservationItem::findOrFail($reservationItemId);
+        $item = ReservationItem::find($reservationItemId);
         $item->delete();
-        return redirect()->route('reservation.index')->with('delete', 'item supprimer avec succes'); 
+        return redirect()->route('reservation.create'); 
     }
 
 }
